@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GetTypetalkState": {
+      "commandName": "Project",
+      "commandLineArgs": "getposts LGgwv2CGGn -t 40377 -from 2018-09-01 -to 2018-09-30 -l table"
+    }
+  }
+}
