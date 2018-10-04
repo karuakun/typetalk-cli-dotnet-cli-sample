@@ -19,7 +19,8 @@ namespace GetTypetalkState
     [Subcommand(GetSpacesCommand.CommandName, typeof(GetSpacesCommand))]
     [Subcommand(GetTopicsCommand.CommandName, typeof(GetTopicsCommand))]
     [Subcommand(LikedSummaryCommand.CommandName, typeof(LikedSummaryCommand))]
-    [Subcommand(GetPostsCommand.CommandName, typeof(GetPostsCommand))]
+    [Subcommand(LikeSummaryCommand.CommandName, typeof(LikeSummaryCommand))]
+    [Subcommand(GetPostCommand.CommandName, typeof(GetPostCommand))]
     partial class Program
     {
         public static async Task<int> Main(string[] args)

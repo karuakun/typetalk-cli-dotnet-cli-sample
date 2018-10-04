@@ -58,8 +58,21 @@ config 以外のサブコマンドは初期化が済んでいないと利用で�
 |{topickId}|トピック名|概要|
 ```
 
+# ポストの取得
+
+```
+.\typetalkcli getpost {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 2018-09-30 -l table
+```
+
+
 # 特定トピック内のいいね状況
 
 ```
 .\typetalkcli likedsummary {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 2018-09-30 -l table
+```
+
+# 特定トピック内のいいねした人
+
+```
+.\typetalkcli likesummary {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 2018-09-30 -l table
 ```

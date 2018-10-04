@@ -1,6 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using GetTypetalkState.OuputLayout;
 using GetTypetalkState.Services;
@@ -9,10 +10,10 @@ using Microsoft.Extensions.Logging;
 
 namespace GetTypetalkState.SubCommand
 {
-    [Command(GetPostsCommand.CommandName)]
-    public class GetPostsCommand : SubCommandBase
+    [Command(LikeSummaryCommand.CommandName)]
+    public class LikeSummaryCommand : SubCommandBase
     {
-        public const string CommandName = "getposts";
+        public const string CommandName = "likesummary";
         [Argument(0)]
         public string SpaceKey { get; set; }
         [Option("-t|--topic")]
@@ -29,7 +30,7 @@ namespace GetTypetalkState.SubCommand
         private readonly ITopicService _topicService;
         private readonly ILogger _logger;
 
-        public GetPostsCommand(
+        public LikeSummaryCommand(
             ILayoutRepository layoutRepository,
             ITopicService topicService,
             ILoggerFactory loggerFactory)
@@ -38,6 +39,7 @@ namespace GetTypetalkState.SubCommand
             _topicService = topicService;
             _logger = loggerFactory.CreateLogger<GetTopicsCommand>();
         }
+
 
         public override async Task<int> OnExecute(CommandLineApplication app)
         {
@@ -48,16 +50,13 @@ namespace GetTypetalkState.SubCommand
 
             var response = await _topicService.Search(SpaceKey, TopicId, fromDate, toDate);
             var layout = _layoutRepository.Get(Layout);
-            layout.Output(response.Select(r => new
-            {
-                r.TopicId,
-                PostId = r.Id,
-                Url = $"https://typetalk.com/topics/{r.TopicId}/posts/{r.Id}",
-                r.CreatedAt,
-                AccoutName = r.Account.Name,
-                Message = r.Message,
-                LikesCount = r.Likes.Length
-            }).OrderBy(p => p.CreatedAt));
+
+            layout.Output(response.SelectMany(p => p.Likes.Select(l => l.Account.Name), (p, a) => a).GroupBy(a => a)
+                .OrderByDescending(g => g.Count()).Select(g => new
+                {
+                    UserId = g.Key,
+                    LikeCount = g.Count()
+                }));
             return 0;
         }
     }
