@@ -15,12 +15,15 @@ using ILogger = Microsoft.Extensions.Logging.ILogger;
 namespace GetTypetalkState
 {
     [Command("typetalk")]
-    [Subcommand(ConfigCommand.CommandName, typeof(ConfigCommand))]
-    [Subcommand(GetSpacesCommand.CommandName, typeof(GetSpacesCommand))]
-    [Subcommand(GetTopicsCommand.CommandName, typeof(GetTopicsCommand))]
-    [Subcommand(LikedSummaryCommand.CommandName, typeof(LikedSummaryCommand))]
-    [Subcommand(LikeSummaryCommand.CommandName, typeof(LikeSummaryCommand))]
-    [Subcommand(GetPostCommand.CommandName, typeof(GetPostCommand))]
+    [Subcommand(ConfigCommand.CommandName, typeof(ConfigCommand))] // 設定
+    [Subcommand(GetSpacesCommand.CommandName, typeof(GetSpacesCommand))] // スペースの取得
+    [Subcommand(GetTopicsCommand.CommandName, typeof(GetTopicsCommand))] // トピックの取得
+    [Subcommand(LikedSummaryCommand.CommandName, typeof(LikedSummaryCommand))] // いいねを受けたひと
+    [Subcommand(LikeSummaryCommand.CommandName, typeof(LikeSummaryCommand))] // いいねをつけたひと
+    [Subcommand(GetPostCommand.CommandName, typeof(GetPostCommand))] // ポストの取得
+    [Subcommand(LikedPostSummaryCommand.CommandName, typeof(LikedPostSummaryCommand))] // 良いねが多かったポスト
+    [Subcommand(TalksSummaryCommand.CommandName, typeof(TalksSummaryCommand))]
+
     partial class Program
     {
         public static async Task<int> Main(string[] args)

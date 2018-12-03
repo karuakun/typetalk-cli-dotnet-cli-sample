@@ -31,11 +31,10 @@ namespace GetTypetalkState.OuputLayout
                 Console.Write("|");
                 foreach (var v in props.Select(p => p.GetValue(s)))
                 {
-                    Console.Write($"{v.ToString().Replace("\n", " ")}|");
+                    Console.Write($"{v?.ToString().Replace("\n", " ")}|");
                 }
                 Console.WriteLine();
             }
-
         }
     }
 }

@@ -9,6 +9,7 @@ namespace GetTypetalkState.Typetalk.Response
         public Account Account { get; set; }
         public string Message { get; set; }
         public Like[] Likes { get; set; }
+        public Talk[] Talks { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }
