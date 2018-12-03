@@ -78,10 +78,10 @@ dotnet run likesummary {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 20
 
 # 期間内でいいねの数が多かったポスト
 ```
-dotnet run likedpostsummary LGgwv2CGGn -t 40377 -from 2018-11-01 -to 2018-11-30 -l table
+dotnet run likedpostsummary {typetalk-spacekey} -t 40377 -from 2018-11-01 -to 2018-11-30 -l table
 ```
 
 # 期間内のタグごとの集計
 ```
-dotnet run talkssummary  LGgwv2CGGn -t 40377 -from 2018-11-01 -to 2018-11-30 -l table
+dotnet run talkssummary  {typetalk-spacekey} -t 40377 -from 2018-11-01 -to 2018-11-30 -l table
 ```
