@@ -57,6 +57,7 @@ namespace GetTypetalkState.SubCommand
             layout.Output(response
                 .Select(r => new
                 {
+                    r.CreatedAt,
                     r.Message,
                     r.Account.Name,
                     LikedCount = r.Likes?.Length ?? 0
