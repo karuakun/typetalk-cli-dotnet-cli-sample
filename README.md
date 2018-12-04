@@ -64,24 +64,24 @@ config 以外のサブコマンドは初期化が済んでいないと利用で�
 dotnet runtypetalkcli getpost {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 2018-09-30 -l table
 ```
 
-# 特定トピック内のいいね状況
+# 特定トピック内で`いいね`された人と`いいね`の数
 
 ```
 dotnet run likedsummary {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 2018-09-30 -l table
 ```
 
-# 特定トピック内のいいねした人
+# 特定トピック内で`いいね`した人と`いいね`の数
 
 ```
 dotnet run likesummary {typetalk-spacekey} -t {topickId} -from 2018-09-01 -to 2018-09-30 -l table
 ```
 
-# 期間内でいいねの数が多かったポスト
+# 期間内でいいねの数が多かった投稿
 ```
-dotnet run likedpostsummary {typetalk-spacekey} -t 40377 -from 2018-11-01 -to 2018-11-30 -l table
+dotnet run likedpostsummary {typetalk-spacekey} -t {topickId} -from 2018-11-01 -to 2018-11-30 -l table
 ```
 
-# 期間内のタグごとの集計
+# 期間内のタグごとの投稿数
 ```
-dotnet run talkssummary  {typetalk-spacekey} -t 40377 -from 2018-11-01 -to 2018-11-30 -l table
+dotnet run talkssummary  {typetalk-spacekey} -t {topickId} -from 2018-11-01 -to 2018-11-30 -l table
 ```
